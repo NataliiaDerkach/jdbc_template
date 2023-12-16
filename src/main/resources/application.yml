@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: kazyava33
+    url: jdbc:postgresql://localhost:5432/social_network
+    username: postgres
+    numTables: 5
+    maxColumns: 10
+    rowsArray:
+      - 100
+      - 200
+      - 300
+      - 400
+      - 500
+    numConnections: 5
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+
