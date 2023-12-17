@@ -4,19 +4,19 @@ import java.time.LocalDate;
 
 public class User {
 
-    private Long id;
+    private int id;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
 
-    public User(Long id, String firstName, String lastName, LocalDate birthDate) {
+    public User(int id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -32,7 +32,7 @@ public class User {
         return birthDate;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

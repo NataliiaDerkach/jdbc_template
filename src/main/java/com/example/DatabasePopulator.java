@@ -1,8 +1,10 @@
 package com.example;
 
+import com.example.highload.console.dictionary.ColumnNamesDictionary;
+import com.example.highload.console.dictionary.ColumnTypesDictionary;
+import com.example.highload.console.dictionary.TableNamesDictionary;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;

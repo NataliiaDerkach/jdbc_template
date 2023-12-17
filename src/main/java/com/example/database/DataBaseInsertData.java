@@ -36,7 +36,7 @@ public class DataBaseInsertData {
                 String lastName = faker.name().lastName();
                 LocalDate birthDate = faker.date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-                // Вставка данных с использованием jdbcTemplate
+                // Вставка данных
                 jdbcTemplate.update(insertQuery, userId, firstName, lastName, birthDate);
             }
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class DataBaseInsertData {
                 // Генерация случайной временной метки
                 LocalDateTime timestamp = LocalDateTime.now();
 
-                // Вставка данных с использованием jdbcTemplate
+                // Вставка данных
                 jdbcTemplate.update(insertQuery, userId1, userId2, timestamp);
             }
         } catch (Exception e) {
@@ -79,7 +79,7 @@ public class DataBaseInsertData {
                 String text = faker.lorem().sentence();
                 LocalDateTime timestamp = LocalDateTime.now();
 
-                // Вставка данных с использованием jdbcTemplate
+                // Вставка данных
                 jdbcTemplate.update("INSERT INTO posts (id, userid, text, timestamp) VALUES (?, ?, ?, ?)",
                         i + 1, userId, text, timestamp);
             }
@@ -104,7 +104,7 @@ public class DataBaseInsertData {
                     continue;
                 }
 
-                // Вставка данных с использованием jdbcTemplate
+                // Вставка данных
                 jdbcTemplate.update("INSERT INTO likes (postid, userid, timestamp) VALUES (?, ?, ?)",
                         postId, userId, timestamp);
             }

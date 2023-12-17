@@ -1,4 +1,4 @@
-package com.example;
+package com.example.highload.console.dictionary;
 
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,6 @@ import java.util.Random;
 public class TableNamesDictionary {
     public static final List<String> TABLE_DICTIONARY = Arrays.asList(
             "comments", "friends", "messages", "photos", "events", "groups"
-            // Добавьте сюда другие возможные имена таблиц
     );
 
     public String getRandomTableName() {

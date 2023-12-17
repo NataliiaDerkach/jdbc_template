@@ -1,4 +1,4 @@
-package com.example;
+package com.example.highload.console.dictionary;
 
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ public class ColumnTypesDictionary {
 
     private static final List<String> TYPE_DICTIONARY = Arrays.asList(
             "VARCHAR(255)", "BIGINT", "TEXT", "TIMESTAMP", "DATE", "INT", "BOOLEAN"
-            // Добавьте сюда другие возможные типы столбцов
+
     );
 
     public static String getRandomColumnType() {

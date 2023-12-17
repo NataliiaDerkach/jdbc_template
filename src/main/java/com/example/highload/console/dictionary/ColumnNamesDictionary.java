@@ -1,4 +1,4 @@
-package com.example;
+package com.example.highload.console.dictionary;
 
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ public class ColumnNamesDictionary {
 
     private static final List<String> COLUMN_DICTIONARY = Arrays.asList(
             "id", "name", "surname", "birthdate", "text", "timestamp", "userid", "postid", "commentid", "groupname", "reaction", "dislike"
-            // Добавьте сюда другие возможные имена столбцов
+
     );
 
     public static String getRandomColumnName() {
