@@ -42,10 +42,10 @@ public class StoredProcedureCreator {
     @PostConstruct
     public void createInsertStoredProcedure() {
         try (Connection connection = DriverManager.getConnection(databaseConfig.getUrl(), databaseConfig.getUsername(), databaseConfig.getPassword())) {
-            String createProcedureSql = "CREATE OR REPLACE FUNCTION insert_user(IN p_id BIGINT, IN p_first_name VARCHAR(255), IN p_last_name VARCHAR(255)) " +
+            String createProcedureSql = "CREATE OR REPLACE FUNCTION insert_users(IN p_id BIGINT, IN p_first_name VARCHAR(255), IN p_last_name VARCHAR(255), IN p_birth_date TIMESTAMP) " +
                     "RETURNS VOID AS $$ " +
                     "BEGIN " +
-                    "    INSERT INTO users (id, first_name, last_name) VALUES (p_id, p_first_name, p_last_name); " +
+                    "    INSERT INTO users (id, first_name, last_name, birth_date) VALUES (p_id, p_first_name, p_last_name, p_birth_date); " +
                     "END; " +
                     "$$ LANGUAGE plpgsql;";
 
@@ -56,15 +56,15 @@ public class StoredProcedureCreator {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-       }
+    }
 
     @PostConstruct
     public void createUpdateStoredProcedure() {
         try (Connection connection = DriverManager.getConnection(databaseConfig.getUrl(), databaseConfig.getUsername(), databaseConfig.getPassword())) {
-            String updateProcedureSql = "CREATE OR REPLACE FUNCTION update_user(IN p_id BIGINT, IN p_first_name VARCHAR(255), IN p_last_name VARCHAR(255)) " +
+            String updateProcedureSql = "CREATE OR REPLACE FUNCTION update_users(IN p_id BIGINT, IN p_first_name VARCHAR(255), IN p_last_name VARCHAR(255), IN p_birth_date TIMESTAMP) " +
                     "RETURNS VOID AS $$ " +
                     "BEGIN " +
-                    "    UPDATE users SET first_name = p_first_name, last_name = p_last_name WHERE id = p_id; " +
+                    "    UPDATE users SET first_name = p_first_name, last_name = p_last_name, birth_date = p_birth_date WHERE id = p_id; " +
                     "END; " +
                     "$$ LANGUAGE plpgsql;";
 

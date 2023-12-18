@@ -15,6 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.time.LocalDate;
+
 
 @SpringBootApplication
 @EnableConfigurationProperties(DatabaseConfig.class)
@@ -79,13 +81,13 @@ public class DemoApplication implements CommandLineRunner {
 
          //Executing Store Procedures
 
-        //storedProcedureCreator.dropStoredProcedure();
+        storedProcedureCreator.dropStoredProcedure();
 
         storedProcedureCreator.createInsertStoredProcedure();
         storedProcedureCreator.createUpdateStoredProcedure();
         storedProcedureCreator.createDeleteStoredProcedure();
 
         userDao.executeDeleteUser(1003);
-        userDao.executeInsertUser(1003, "Mix", "Vang");
+        userDao.executeInsertUser(1003, "Mix", "Vang",LocalDate.now());
     }
 }
