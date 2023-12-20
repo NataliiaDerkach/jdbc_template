@@ -1,4 +1,4 @@
-package com.example.storedprocedur;
+package com.example.storedprocedure;
 
 import com.example.DatabaseConfig;
 import com.example.DemoApplication;
@@ -14,15 +14,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
-
-import static java.util.Date.*;
 
 @Component
 public class UserDao {
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     private DatabaseConfig databaseConfig;

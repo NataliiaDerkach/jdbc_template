@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 @Setter
 public class Likes {
 
-    private Long postid;
-    private Long userid;
+    private int postid;
+    private int userid;
     private LocalDateTime timestamp;
 
-    public Likes(Long postid, Long userid, LocalDateTime timestamp) {
+    public Likes(int postid, int userid, LocalDateTime timestamp) {
         this.postid = postid;
         this.userid = userid;
         this.timestamp = timestamp;

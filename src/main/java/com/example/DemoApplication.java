@@ -3,19 +3,16 @@ package com.example;
 import com.example.database.DataBaseCreating;
 import com.example.database.DataBaseInsertData;
 import com.example.database.DatabaseSamplingData;
-import com.example.storedprocedur.StoredProcedureCreator;
-import com.example.storedprocedur.UserDao;
+import com.example.storedprocedure.StoredProcedureUser;
+import com.example.storedprocedure.StoredProcedureLikes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-
-import java.time.LocalDate;
 
 
 @SpringBootApplication
@@ -34,14 +31,10 @@ public class DemoApplication implements CommandLineRunner {
     DatabasePopulator databasePopulator;
 
     @Autowired
-    StoredProcedureCreator storedProcedureCreator;
+    StoredProcedureUser storedProcedureUser;
 
     @Autowired
-    UserDao userDao;
-
-    @Autowired
-    @Qualifier("databaseConfig")
-    DatabaseConfig databaseConfig;
+    StoredProcedureLikes storedProcedureLikes;
 
 
     public static void main(String[] args) {
@@ -52,42 +45,37 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//
-//        //Creating simple database with tables Users, Friendships, Posts, Likes
-//        dataBaseCreating.createTables();
-//
-//        dataBaseInsertData.insertUserRandomData();
-//
-//        dataBaseInsertData.insertFriendshipsData();
-//
-//        dataBaseInsertData.insertPostsData();
-//
-//        dataBaseInsertData.insertLikesData();
-//
-//        databaseSamplingData.printOutNamesByCondition();
-//
-//
-//
-//
-//
-//
-//        //Highload Writing Console Tool that populates the database
-//        log.info("Executing randon table");
-//        databasePopulator.createRandomTables();
-//        log.info("Database population completed.");
+
+        //Creating simple database with tables Users, Friendships, Posts, Likes
+        dataBaseCreating.createTables();
+
+        dataBaseInsertData.insertUserRandomData();
+
+        dataBaseInsertData.insertFriendshipsData();
+
+        dataBaseInsertData.insertPostsData();
+
+        dataBaseInsertData.insertLikesData();
+
+        databaseSamplingData.printOutNamesByCondition();
 
 
+        //Highload Writing Console Tool that populates the database
+        log.info("Executing randon table");
+        databasePopulator.createRandomTables();
+        log.info("Database population completed.");
 
 
-         //Executing Store Procedures
+        //Executing Store Procedures
 
-        storedProcedureCreator.dropStoredProcedure();
+        storedProcedureUser.dropAllUserStoredProcedure();
+        storedProcedureUser.createInsertStoredProcedure();
+        storedProcedureUser.createUpdateStoredProcedure();
+        storedProcedureUser.createDeleteStoredProcedure();
 
-        storedProcedureCreator.createInsertStoredProcedure();
-        storedProcedureCreator.createUpdateStoredProcedure();
-        storedProcedureCreator.createDeleteStoredProcedure();
-
-        userDao.executeDeleteUser(1003);
-        userDao.executeInsertUser(1003, "Mix", "Vang",LocalDate.now());
+        storedProcedureLikes.dropAllLikesStoredProcedure();
+        storedProcedureLikes.createInsertLikesStoredProcedure();
+        storedProcedureLikes.createUpdateLikesStoredProcedure();
+        storedProcedureLikes.createDeleteLikesStoredProcedure();
     }
 }

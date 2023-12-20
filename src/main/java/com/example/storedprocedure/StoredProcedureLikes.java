@@ -1,4 +1,4 @@
-package com.example.storedprocedur;
+package com.example.storedprocedure;
 
 import com.example.DatabaseConfig;
 import jakarta.annotation.PostConstruct;
@@ -12,27 +12,27 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 @Component
-@PropertySource("classpath:application.yml")
-public class StoredProcedureCreator {
+public class StoredProcedureLikes {
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     private DatabaseConfig databaseConfig;
 
     @PostConstruct
-    public void dropStoredProcedure() {
+    public void dropAllLikesStoredProcedure() {
         try (Connection connection = DriverManager.getConnection(databaseConfig.getUrl(), databaseConfig.getUsername(), databaseConfig.getPassword())) {
             connection.setAutoCommit(true);
 
-            String dropProcedureSql = "DROP FUNCTION IF EXISTS insert_users(BIGINT, VARCHAR(255), VARCHAR(255), TIMESTAMP);";
+            String dropInsertLikesProcedureSql = "DROP FUNCTION IF EXISTS insert_likes(BIGINT, BIGINT, TIMESTAMP);";
+            String dropUpdateLikesProcedureSql = "DROP FUNCTION IF EXISTS update_likes(BIGINT, BIGINT, TIMESTAMP);";
+            String dropDeleteLikesProcedureSql = "DROP FUNCTION IF EXISTS delete_likes(BIGINT, BIGINT, TIMESTAMP);";
 
             try (Statement statement = connection.createStatement()) {
-                statement.execute(dropProcedureSql);
-                System.out.println("Stored procedure dropped successfully.");
+                statement.execute(dropInsertLikesProcedureSql);
+                statement.execute(dropUpdateLikesProcedureSql);
+                statement.execute(dropDeleteLikesProcedureSql);
+                System.out.println("All Likes Stored procedure dropped successfully.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,18 +40,18 @@ public class StoredProcedureCreator {
     }
 
     @PostConstruct
-    public void createInsertStoredProcedure() {
+    public void createInsertLikesStoredProcedure() {
         try (Connection connection = DriverManager.getConnection(databaseConfig.getUrl(), databaseConfig.getUsername(), databaseConfig.getPassword())) {
-            String createProcedureSql = "CREATE OR REPLACE FUNCTION insert_users(IN p_id BIGINT, IN p_first_name VARCHAR(255), IN p_last_name VARCHAR(255), IN p_birth_date TIMESTAMP) " +
+            String createProcedureSql = "CREATE OR REPLACE FUNCTION insert_likes(IN p_postid BIGINT, IN p_userid BIGINT, IN p_timestamp TIMESTAMP) " +
                     "RETURNS VOID AS $$ " +
                     "BEGIN " +
-                    "    INSERT INTO users (id, first_name, last_name, birth_date) VALUES (p_id, p_first_name, p_last_name, p_birth_date); " +
+                    "    INSERT INTO likes (postid, userid, timestamp) VALUES (p_postid, p_userid, p_timestamp); " +
                     "END; " +
                     "$$ LANGUAGE plpgsql;";
 
             try (Statement statement = connection.createStatement()) {
                 statement.execute(createProcedureSql);
-                System.out.println("Insert Stored procedure created successfully.");
+                System.out.println("Insert Likes Stored procedure created successfully.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,18 +59,18 @@ public class StoredProcedureCreator {
     }
 
     @PostConstruct
-    public void createUpdateStoredProcedure() {
+    public void createUpdateLikesStoredProcedure() {
         try (Connection connection = DriverManager.getConnection(databaseConfig.getUrl(), databaseConfig.getUsername(), databaseConfig.getPassword())) {
-            String updateProcedureSql = "CREATE OR REPLACE FUNCTION update_users(IN p_id BIGINT, IN p_first_name VARCHAR(255), IN p_last_name VARCHAR(255), IN p_birth_date TIMESTAMP) " +
+            String updateProcedureSql = "CREATE OR REPLACE FUNCTION update_likes(IN p_postid BIGINT, IN p_userid BIGINT, IN p_timestamp TIMESTAMP) " +
                     "RETURNS VOID AS $$ " +
                     "BEGIN " +
-                    "    UPDATE users SET first_name = p_first_name, last_name = p_last_name, birth_date = p_birth_date WHERE id = p_id; " +
+                    "    UPDATE likes SET userid = p_userid, timestamp = p_timestamp WHERE postid = p_postid; " +
                     "END; " +
                     "$$ LANGUAGE plpgsql;";
 
             try (Statement statement = connection.createStatement()) {
                 statement.execute(updateProcedureSql);
-                System.out.println("Update Stored procedure created successfully.");
+                System.out.println("Update Likes Stored procedure created successfully.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,23 +78,21 @@ public class StoredProcedureCreator {
     }
 
     @PostConstruct
-    public void createDeleteStoredProcedure() {
+    public void createDeleteLikesStoredProcedure() {
         try (Connection connection = DriverManager.getConnection(databaseConfig.getUrl(), databaseConfig.getUsername(), databaseConfig.getPassword())) {
-            String deleteProcedureSql = "CREATE OR REPLACE FUNCTION delete_user(IN p_id BIGINT) " +
+            String deleteProcedureSql = "CREATE OR REPLACE FUNCTION delete_likes(IN p_postid BIGINT) " +
                     "RETURNS VOID AS $$ " +
                     "BEGIN " +
-                    "    DELETE FROM users WHERE id = p_id; " +
+                    "    DELETE FROM likes WHERE postid = p_postid; " +
                     "END; " +
                     "$$ LANGUAGE plpgsql;";
 
             try (Statement statement = connection.createStatement()) {
                 statement.execute(deleteProcedureSql);
-                System.out.println("Delete Stored procedure created successfully.");
+                System.out.println("Delete Likes Stored procedure created successfully.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }
-

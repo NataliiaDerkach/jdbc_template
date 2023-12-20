@@ -5,11 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 
 
+import lombok.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
 
 @Configuration
 @Component
@@ -20,10 +26,10 @@ public class DatabaseConfig {
     private String url;
     private String username;
     private String password;
-    int numTables;
-    int maxColumns;
-    List<Integer> rowsArray;
-    int numConnections;
+    private int numTables;
+    private int maxColumns;
+    private List<Integer> rowsArray;
+    private int numConnections;
 
 
     public String getUrl() {
