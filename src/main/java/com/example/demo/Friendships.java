@@ -1,7 +1,12 @@
 package com.example.demo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class Friendships {
 
     private Long userid1;
@@ -14,29 +19,6 @@ public class Friendships {
         this.timestamp = timestamp;
     }
 
-    public Long getUserId1() {
-        return userid1;
-    }
-
-    public Long getUserId2() {
-        return userid2;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setUserId1(Long userid1) {
-        this.userid1 = userid1;
-    }
-
-    public void setUserId2(Long userid2) {
-        this.userid2 = userid2;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
 
     @Override
     public String toString() {

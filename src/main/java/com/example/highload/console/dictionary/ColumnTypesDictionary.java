@@ -9,11 +9,11 @@ import java.util.Random;
 public class ColumnTypesDictionary {
 
     private static final List<String> TYPE_DICTIONARY = Arrays.asList(
-            "VARCHAR(255)", "BIGINT", "TEXT", "TIMESTAMP", "DATE", "INT", "BOOLEAN"
+            "VARCHAR(255)", "TEXT"
 
     );
 
-    public static String getRandomColumnType() {
+    public static String getRandomColumnsType() {
         Random random = new Random();
         int index = random.nextInt(TYPE_DICTIONARY.size());
         return TYPE_DICTIONARY.get(index);

@@ -1,8 +1,12 @@
 package com.example.demo;
 
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class Likes {
 
     private Long postid;
@@ -15,29 +19,6 @@ public class Likes {
         this.timestamp = timestamp;
     }
 
-    public Long getPostid() {
-        return postid;
-    }
-
-    public Long getUserid() {
-        return userid;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setPostid(Long postid) {
-        this.postid = postid;
-    }
-
-    public void setUserid(Long userid) {
-        this.userid = userid;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
 
     @Override
     public String toString() {

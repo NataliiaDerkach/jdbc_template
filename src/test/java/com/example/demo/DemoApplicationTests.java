@@ -91,6 +91,7 @@ class DemoApplicationTests {
                 )
         );
 
+        assert updatedUser != null;
         assertEquals(1002, updatedUser.getId());
         assertEquals("UpdatedJohn", updatedUser.getFirstName());
         assertEquals("UpdatedDoe", updatedUser.getLastName());

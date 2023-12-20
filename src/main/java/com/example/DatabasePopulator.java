@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.*;
 
 import static com.example.DemoApplication.log;
+import static com.example.highload.console.dictionary.ColumnTypesDictionary.getRandomColumnsType;
 
 
 @Component
@@ -70,7 +71,7 @@ public class DatabasePopulator {
             for (int k = 0; k < numRows; k++) {
                 insertRandomRow(tableName);
             }
-
+            log.info("Insert into: " + tableName + " and column name: " + columnName + " Qty rows: " + numRows);
         }
     }
 
@@ -83,7 +84,7 @@ public class DatabasePopulator {
         } else if (columnName.contains("id") || "id".equalsIgnoreCase(columnName)) {
             return columnType = "BIGINT";
         } else {
-            return columnType = "VARCHAR(255)";
+            return getRandomColumnsType();
         }
     }
 
@@ -106,7 +107,6 @@ public class DatabasePopulator {
         values.append(")");
 
         jdbcTemplate.update(insertRowQuery.toString() + values.toString());
-        log.info("Insert into " + tableName + " and column name " + columnName);
     }
 
     private List<String> getColumnNamesForTable(String tableName) {

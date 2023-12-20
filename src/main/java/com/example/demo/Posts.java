@@ -1,8 +1,12 @@
 package com.example.demo;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+
+import java.time.LocalDateTime;
+@Getter
+@Setter
 public class Posts {
 
     private Long id;
@@ -14,38 +18,6 @@ public class Posts {
         this.id = id;
         this.userid = userid;
         this.text = text;
-        this.timestamp = timestamp;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Long getUserId() {
-        return userid;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUserId(Long userid) {
-        this.userid = userid;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
