@@ -1,4 +1,4 @@
-package com.example.highload.console.dictionary;
+package com.example.dictionary;
 
 import org.springframework.stereotype.Component;
 

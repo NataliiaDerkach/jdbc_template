@@ -52,29 +52,29 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        //Creating simple database with tables Users, Friendships, Posts, Likes
-        dataBaseCreating.createTables();
-
-        dataBaseInsertData.insertUserRandomData();
-
-        dataBaseInsertData.insertFriendshipsData();
-
-        dataBaseInsertData.insertPostsData();
-
-        dataBaseInsertData.insertLikesData();
-
-        databaseSamplingData.printOutNamesByCondition();
-
-
-
-
-
-
-        //Highload Writing Console Tool that populates the database
-        log.info("Executing randon table");
-        databasePopulator.createRandomTables();
-        log.info("Database population completed.");
+//
+//        //Creating simple database with tables Users, Friendships, Posts, Likes
+//        dataBaseCreating.createTables();
+//
+//        dataBaseInsertData.insertUserRandomData();
+//
+//        dataBaseInsertData.insertFriendshipsData();
+//
+//        dataBaseInsertData.insertPostsData();
+//
+//        dataBaseInsertData.insertLikesData();
+//
+//        databaseSamplingData.printOutNamesByCondition();
+//
+//
+//
+//
+//
+//
+//        //Highload Writing Console Tool that populates the database
+//        log.info("Executing randon table");
+//        databasePopulator.createRandomTables();
+//        log.info("Database population completed.");
 
 
 

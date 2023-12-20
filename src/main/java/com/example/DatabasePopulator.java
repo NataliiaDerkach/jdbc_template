@@ -1,8 +1,8 @@
 package com.example;
 
-import com.example.highload.console.dictionary.ColumnNamesDictionary;
-import com.example.highload.console.dictionary.ColumnTypesDictionary;
-import com.example.highload.console.dictionary.TableNamesDictionary;
+import com.example.dictionary.ColumnNamesDictionary;
+import com.example.dictionary.ColumnTypesDictionary;
+import com.example.dictionary.TableNamesDictionary;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.*;
 
 import static com.example.DemoApplication.log;
-import static com.example.highload.console.dictionary.ColumnTypesDictionary.getRandomColumnsType;
+import static com.example.dictionary.ColumnTypesDictionary.getRandomColumnsType;
 
 
 @Component

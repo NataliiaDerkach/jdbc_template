@@ -28,7 +28,7 @@ public class StoredProcedureCreator {
         try (Connection connection = DriverManager.getConnection(databaseConfig.getUrl(), databaseConfig.getUsername(), databaseConfig.getPassword())) {
             connection.setAutoCommit(true);
 
-            String dropProcedureSql = "DROP FUNCTION IF EXISTS insert_user(INT, VARCHAR(255), VARCHAR(255));";
+            String dropProcedureSql = "DROP FUNCTION IF EXISTS insert_users(BIGINT, VARCHAR(255), VARCHAR(255), TIMESTAMP);";
 
             try (Statement statement = connection.createStatement()) {
                 statement.execute(dropProcedureSql);
